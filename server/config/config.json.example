@@ -1,0 +1,39 @@
+{
+    "port": "5757",
+
+    "rootPathname": "",
+
+    /**
+     * Cnipr OAuth 2.0 配置
+     */
+    "oauth2": {
+        // Cnipr Client ID
+        "clientId": "Your Cnipr Client ID",
+        // Cnipr Client Secret
+        "clientSecret": "Your Cnipr Client Secret",
+        // Cnipr Redirect URI
+        "redirectUri": "Your Cnipr Redirect URI",
+        // Cnipr Refresh Token
+        "refreshToken": "Your Cnipr Refresh Token",
+        // Cnipr OpenID & OpenKey
+        "openId": "Your Cnipr OpenID",
+        "openKey": "Your Cnipr OpenKey",
+        // csfr串
+        "csfrState": "csfr String"
+    },
+
+    /**
+     * MySQL 配置
+     */
+     
+    "mysql": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "user",
+        "db": "database",
+        "pass": "******",
+        "char": "utf8mb4"
+    },
+
+    "jwtSecret": "shared secret"
+}
