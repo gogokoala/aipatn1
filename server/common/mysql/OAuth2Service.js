@@ -1,8 +1,8 @@
-const debug = require('debug')('cnipr-sdk[AuthDbService]')
+const debug = require('debug')('cnipr-sdk[OAuth2Service]')
 const mysql = require('./index')
 const { ERRORS } = require('../constants')
 
-const config = require('../../config')
+const config = require('../../config')()
 const moment = require('moment')
 // const uuidGenerator = require('uuid/v4')
 

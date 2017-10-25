@@ -1,20 +1,13 @@
 /**
  * ajax 服务路由集合
  */
-const debug = require('debug')('aipath.routes')
-
 const router = require('koa-router')({
     prefix: '/api' // 定义所有路由的前缀都已 /cnipr 开头
 })
 const controllers = require('../controllers')
 // Cnipr SDK
-// const cnipr = require('../cnipr-node-sdk')
-// 获取基础配置
-const config = require('../config')()
+// const cnipr = require('../cnipr-sdk')
 
-debug('config: %o', config)
-
-// 从 sdk 中取出中间件
 /*
 const {
     auth: { initialize },

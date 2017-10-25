@@ -1,6 +1,6 @@
 const debug = require('debug')('cnipr-sdk[sf1]')
 const http = require('axios')
-const config = require('../../config')
+const config = require('../../config')()
 const { ERRORS } = require('../constants')
 
 let search = async function (req) {
@@ -59,6 +59,5 @@ let sf1Middleware = async function (ctx, next) {
 }
 
 module.exports = {
-    search,
     sf1Middleware
 }

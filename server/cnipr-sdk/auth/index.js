@@ -1,21 +1,13 @@
 const debug = require('debug')('cnipr-sdk[auth]')
 const http = require('axios')
-const config = require('../../config')
-// const uuidGenerator = require('uuid/v4')
-// const sha1 = require('../helper/sha1')
+const config = require('../../config')()
 
 const {
     ERRORS
 } = require('../constants')
-const OAuth2Service = require('../mysql/OAuth2Service')
-const moment = require('moment')
 
-/*
-const qcloudProxyLogin = require('../helper/qcloudProxyLogin')
-const AuthDbService = require('../mysql/AuthDbService')
-const sha1 = require('../helper/sha1')
-const aesDecrypt = require('../helper/aesDecrypt')
-*/
+const OAuth2Service = require('../../common/mysql/OAuth2Service')
+const moment = require('moment')
 
 /**
  * Step1：获取Authorization Code
@@ -59,11 +51,6 @@ let getAuthorizationCode = async function () {
  * @return {Promise}
  * @example 基于 Express
  * authorizationCallback(this.req).then(accessToken => { // ...some code })
- * https://app.getpostman.com/oauth2/callback?
- * openkey=913ef58fc002eb2da04ca94448b04bf5 &
- * code=77e1151c244dbd5d6a49224174a8192b    &
- * openid=e3504f932dd828f21fc394a2bb011ff4  &
- * state=aipatn.com
  */
 let authorizationCallback = async function (req) {
     const {
@@ -117,13 +104,6 @@ let authorizationCallback = async function (req) {
  * Step2：通过Authorization Code获取Access Token
  * @param {string} code AuthorizationCode
  * @return {Promise}
- * 
- * {"status":0,
- * "message":"SUCCESS",
- * "expires_in":2592000,
- * "refresh_token":"458a98a71efc6f09a9c765b297d58472",
- * "access_token":"01a47584253ad55bcfd8f96cb23a7ceb"}
- * 
  */
 let getAccessTokenByAuthorizationCode = async function (code) {
     const clientId = config.oauth2.clientId
@@ -156,11 +136,6 @@ let getAccessTokenByAuthorizationCode = async function (code) {
 
 /**
  * 使用Refresh Token 刷新 Access Token
- * {"status":0,
- * "message":"SUCCESS",
- * "expires_in":2592000,
- * "refresh_token":"458a98a71efc6f09a9c765b297d58472",
- * "access_token":"01a47584253ad55bcfd8f96cb23a7ceb"}
  * 
  */
 let refreshAccessToken = async function () {
